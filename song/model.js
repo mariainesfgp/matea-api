@@ -22,5 +22,6 @@ const songSchema = new Schema({
 
   module.exports = {
       getAllSongs,
-      addSong
+      addSong,
+      Song: Song
   }
