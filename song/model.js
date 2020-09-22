@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://maria:maria@cluster0.qv82e.mongodb.net/proyecto-mod-3?retryWrites=true&w=majority', 
-{ useNewUrlParser: true, useUnifiedTopology: true });
-
 const Schema =  mongoose.Schema;
 
 const songSchema = new Schema({

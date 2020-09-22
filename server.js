@@ -1,32 +1,20 @@
 const express = require('express');
-const songsController = require('./song/controller.js');
-var server = express();
+const songsRoute = require ('./song/route.js')
+const userRoute = require ('./user/route.js')
+const mongoose = require('mongoose');
 
+mongoose.connect('mongodb+srv://maria:maria@cluster0.qv82e.mongodb.net/proyecto-mod-3?retryWrites=true&w=majority', 
+{ useNewUrlParser: true, useUnifiedTopology: true });
+
+var server = express();
 server.use(express.json());
 server.listen(4000);
 console.log('Servidor andando en puerto 4000');
 
-server.get('/songs/', async function(req,res){
-    try
-    {
-        var songs = await songsController.findAllSongs();
-        res.status(200).send(songs);
-    }
-    catch(e){
-        res.status(500).send('Hubo un error ' + e);
-    }
-})
+//Songs
+server.get('/songs/', songsRoute.getSongs)
+server.post('/songs/', songsRoute.postSong)
 
-server.post('/songs/', async function(req, res){
-    try
-    {
-        await songsController.addSong(req.body);
-        res.status(201).send('La cancion se agregó con éxito')
-
-    }
-    catch(e)
-    {
-        res.status(500).send('Hubo un error ' + e);
-
-    }
-})
+//Users
+server.get('/users/', userRoute.getUsers)
+server.post('/users/', userRoute.postUser)
