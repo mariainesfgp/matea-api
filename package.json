@@ -18,6 +18,7 @@
   "homepage": "https://github.com/mariainesfgp/matea-api#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "heroku": "^7.43.2",
     "mongoose": "^5.10.6"
   }
 }
