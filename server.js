@@ -8,7 +8,7 @@ mongoose.connect('mongodb+srv://maria:maria@cluster0.qv82e.mongodb.net/proyecto-
 
 var server = express();
 server.use(express.json());
-server.listen(4000);
+server.listen(process.env.PORT);
 console.log('Servidor andando en puerto 4000');
 
 //Songs
